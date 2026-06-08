@@ -92,7 +92,7 @@ function ProductPage() {
           <div className="mt-8">
             <h3 className="mb-3 font-display text-lg">Specifications</h3>
             <dl className="grid grid-cols-2 gap-x-6 gap-y-2 rounded-lg border border-border bg-card p-5 text-sm">
-              {Object.entries(product.specs).map(([k, v]) => (
+              {(Object.entries(product.specs) as [string, string][]).map(([k, v]) => (
                 <div key={k} className="flex justify-between border-b border-border/60 py-1.5">
                   <dt className="text-muted-foreground">{k}</dt>
                   <dd className="text-foreground">{v}</dd>
