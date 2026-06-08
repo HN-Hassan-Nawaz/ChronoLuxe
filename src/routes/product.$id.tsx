@@ -81,10 +81,10 @@ function ProductPage() {
           </Link>
 
           <div className="mt-8 grid grid-cols-3 gap-3 text-center text-xs">
-            {[[ShieldCheck, "Authentic"], [Truck, "Free Shipping"], [Award, "2-Yr Warranty"]].map(([I, t], i) => (
+            {([[ShieldCheck, "Authentic"], [Truck, "Free Shipping"], [Award, "2-Yr Warranty"]] as const).map(([I, t], i) => (
               <div key={i} className="rounded-lg border border-border bg-card p-3">
                 <I className="mx-auto h-5 w-5 text-gold" />
-                <div className="mt-1.5 text-foreground/80">{t as string}</div>
+                <div className="mt-1.5 text-foreground/80">{t}</div>
               </div>
             ))}
           </div>
