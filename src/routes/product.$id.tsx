@@ -41,7 +41,7 @@ function ProductPage() {
             <img src={img} alt={product.name} className="h-full w-full object-cover" />
           </div>
           <div className="mt-4 grid grid-cols-4 gap-3">
-            {(product.images ?? [product.image]).map((src, i) => (
+            {(product.images ?? [product.image]).map((src: string, i: number) => (
               <button key={i} onClick={() => setImg(src)}
                 className={`aspect-square overflow-hidden rounded-lg border bg-surface transition ${img === src ? "border-gold" : "border-border hover:border-gold/50"}`}>
                 <img src={src} alt="" className="h-full w-full object-cover" />
