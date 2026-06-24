@@ -5,14 +5,18 @@ export function Footer() {
   return (
     <footer className="mt-24 border-t border-border bg-card/40">
       <div className="container-x grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-5">
-        <div className="lg:col-span-2">
-          <Link to="/" className="font-display text-2xl">
-            Chrono<span className="gold-gradient-text">Luxe</span>
+        <div className="lg:col-span-2 flex flex-col items-start justify-start text-left">
+          <Link to="/" className="transition-opacity hover:opacity-90 block">
+            <img
+              src="/lg.png"
+              alt="ChronoLuxe Logo"
+              className="h-20 w-auto object-contain object-left"
+            />
           </Link>
-          <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-            A global destination for affordable, premium, luxury, smart, sports, and limited-edition watches from the world's most trusted brands.
+          <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground text-left">
+            A global destination for premium luxury watches from the world's most trusted brands. Authentic timepieces with worldwide shipping & warranty.
           </p>
-          <div className="mt-6 flex gap-3">
+          <div className="mt-6 flex justify-start gap-3 w-full">
             {[Facebook, Instagram, Twitter, Youtube].map((I, i) => (
               <a key={i} href="#" className="rounded-full border border-border p-2.5 text-foreground/70 transition hover:border-gold hover:text-gold">
                 <I className="h-4 w-4" />
@@ -35,11 +39,11 @@ export function Footer() {
         <div>
           <h4 className="mb-4 text-sm font-semibold uppercase tracking-wider text-gold">Customer Care</h4>
           <ul className="space-y-2 text-sm text-muted-foreground">
-            <li><a className="hover:text-gold" href="#">Shipping Policy</a></li>
-            <li><a className="hover:text-gold" href="#">Returns & Exchanges</a></li>
-            <li><a className="hover:text-gold" href="#">Warranty</a></li>
-            <li><a className="hover:text-gold" href="#">FAQ</a></li>
-            <li><a className="hover:text-gold" href="#">Support</a></li>
+            <li><Link to="/shipping-policy" className="hover:text-gold">Shipping Policy</Link></li>
+            <li><Link to="/returns-exchanges" className="hover:text-gold">Returns & Exchanges</Link></li>
+            <li><Link to="/warranty" className="hover:text-gold">Warranty</Link></li>
+            <li><Link to="/faq" className="hover:text-gold">FAQ</Link></li>
+            <li><Link to="/support" className="hover:text-gold">Support</Link></li>
           </ul>
         </div>
 

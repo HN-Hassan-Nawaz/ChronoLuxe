@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Menu, X, Search, Heart, ShoppingBag, User } from "lucide-react";
 import { useShop } from "@/context/ShopContext";
 import { categories } from "@/lib/data";
@@ -19,15 +19,32 @@ export function Navbar() {
   const { cart, wishlist } = useShop();
   const pathname = useRouterState({ select: (s) => s.location.pathname });
 
+  // Prevent background page body from scrolling when the menu is open
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [open]);
+
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-xl">
-      <div className="container-x flex h-16 items-center justify-between gap-4 md:h-20">
-        <Link to="/" className="flex items-center gap-2">
-          <span className="font-display text-xl tracking-tight md:text-2xl">
-            Chrono<span className="gold-gradient-text">Luxe</span>
-          </span>
+      <div className="container-x flex h-20 items-center justify-between gap-4 md:h-24">
+        
+        {/* Logo */}
+        <Link to="/" className="flex items-center transition-opacity hover:opacity-90">
+          <img 
+            src="/lg.png" 
+            alt="ChronoLuxe" 
+            className="h-20 w-auto object-contain md:h-24" 
+          />
         </Link>
 
+        {/* Desktop Nav */}
         <nav className="hidden items-center gap-7 lg:flex">
           {nav.map((n) => {
             const active = pathname === n.to;
@@ -60,6 +77,7 @@ export function Navbar() {
           })}
         </nav>
 
+        {/* Right Icons */}
         <div className="flex items-center gap-1 md:gap-2">
           <Link to="/shop" className="rounded-full p-2 text-foreground/80 transition hover:bg-secondary hover:text-gold"><Search className="h-5 w-5" /></Link>
           <Link to="/wishlist" className="relative rounded-full p-2 text-foreground/80 transition hover:bg-secondary hover:text-gold">
@@ -77,15 +95,41 @@ export function Navbar() {
         </div>
       </div>
 
+      {/* MOBILE OVERLAY WITH REDUCED Y-AXIS GAP */}
       {open && (
-        <div className="border-t border-border bg-background lg:hidden">
-          <div className="container-x flex flex-col py-3">
-            {nav.map((n) => (
-              <Link key={n.to} to={n.to} onClick={() => setOpen(false)} className="rounded-md px-3 py-3 text-sm text-foreground/80 transition hover:bg-secondary hover:text-gold">
-                {n.label}
+        <div className="fixed inset-x-0 bottom-0 top-20 z-[9999] bg-[#0a0a0a] min-h-[calc(100vh-64px)] overflow-y-auto lg:hidden">
+          <div className="flex flex-col p-6">
+            
+            {/* Nav links block */}
+            <div className="flex flex-col gap-1">
+              {nav.map((n) => {
+                const active = pathname === n.to;
+                return (
+                  <Link 
+                    key={n.to} 
+                    to={n.to} 
+                    onClick={() => setOpen(false)} 
+                    className={`rounded-xl px-4 py-2.5 text-base font-medium transition-colors ${
+                      active ? "bg-secondary text-gold" : "text-foreground/90 hover:bg-secondary"
+                    }`}
+                  >
+                    {n.label}
+                  </Link>
+                );
+              })}
+            </div>
+
+            {/* Bottom Account Login Button */}
+            <div className="mt-8 border-t border-border/60 pt-5">
+              <Link 
+                to="/login" 
+                onClick={() => setOpen(false)} 
+                className="flex w-full items-center justify-center gap-2 rounded-xl bg-gold py-3.5 text-center text-sm font-medium text-gold-foreground transition-opacity hover:opacity-90"
+              >
+                <User className="h-4 w-4" /> Account Login / Register
               </Link>
-            ))}
-            <Link to="/login" onClick={() => setOpen(false)} className="rounded-md px-3 py-3 text-sm text-foreground/80 transition hover:bg-secondary hover:text-gold">Login / Register</Link>
+            </div>
+
           </div>
         </div>
       )}

@@ -5,8 +5,7 @@ export type Category =
   | "mens"
   | "womens"
   | "vintage"
-  | "limited"
-  | "affordable";
+  | "limited";
 
 export type Badge = "New" | "Premium" | "Sale" | "Limited" | "Bestseller";
 

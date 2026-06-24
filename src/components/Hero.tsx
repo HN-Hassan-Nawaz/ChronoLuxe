@@ -9,7 +9,7 @@ export function Hero() {
           alt="" className="h-full w-full object-cover opacity-30" />
         <div className="absolute inset-0 bg-gradient-to-r from-background via-background/85 to-background/40" />
       </div>
-      <div className="container-x grid items-center gap-10 py-20 md:py-28 lg:grid-cols-2 lg:py-36">
+      <div className="container-x grid items-center gap-10 py-20 md:py-28 lg:grid-cols-2 lg:py-24">
         <div className="animate-fade-in">
           <span className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/5 px-3 py-1 text-xs uppercase tracking-wider text-gold">
             <span className="h-1.5 w-1.5 rounded-full bg-gold animate-pulse" /> New Season · 2026
@@ -40,8 +40,8 @@ export function Hero() {
         </div>
         <div className="relative hidden lg:block">
           <div className="absolute -inset-10 -z-10 rounded-full bg-gold/10 blur-3xl" />
-          <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=85"
-            alt="Luxury watch" className="mx-auto w-[80%] rounded-2xl shadow-2xl animate-fade-in" />
+          <img src="https://plus.unsplash.com/premium_photo-1728759436968-db4b52249ffa?w=1200&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2F0Y2hlcyUyMGZvciUyMG1lbnxlbnwwfHwwfHx8MA%3D%3D"
+            alt="Luxury watch" className="mx-auto w-[80%] h-[400px] rounded-2xl shadow-2xl object-cover animate-fade-in" />
         </div>
       </div>
     </section>

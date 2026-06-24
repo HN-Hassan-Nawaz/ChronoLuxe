@@ -109,3 +109,17 @@
   scrollbar-width: none;
 }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+
+@theme inline {
+  /* ... keep all your existing variables here ... */
+  --font-sans: "Inter", system-ui, sans-serif;
+
+  /* ADD THESE TWO LINES AT THE BOTTOM OF @theme inline */
+  --animate-marquee: marquee 25s linear infinite;
+  
+  @keyframes marquee {
+    from { transform: translateX(0%); }
+    to { transform: translateX(-100%); }
+  }
+}

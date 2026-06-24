@@ -1,7 +1,7 @@
 import type { Product, Brand, CategoryInfo } from "./types";
 
-const img = (id: string, w = 800) =>
-  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=80`;
+const img = (id: string, w = 1600) =>
+  `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${w}&q=90`;
 
 export const categories: CategoryInfo[] = [
   { id: "luxury", name: "Luxury Watches", description: "Timeless craftsmanship", image: img("photo-1523275335684-37898b6baf30") },
@@ -11,7 +11,6 @@ export const categories: CategoryInfo[] = [
   { id: "womens", name: "Women's Watches", description: "Elegant & graceful", image: img("photo-1535632787350-4e68ef0ac584") },
   { id: "vintage", name: "Vintage Watches", description: "Heritage classics", image: img("photo-1547996160-81dfa63595aa") },
   { id: "limited", name: "Limited Edition", description: "Rare & collectible", image: img("photo-1614703418878-13d5a0e8a8bf") },
-  { id: "affordable", name: "Affordable Watches", description: "Style for everyone", image: img("photo-1524805444758-089113d48a6d") },
 ];
 
 export const brands: Brand[] = [
@@ -27,9 +26,9 @@ export const brands: Brand[] = [
 ];
 
 const watchImages = [
-  "photo-1523275335684-37898b6baf30",
+  // "photo-1523275335684-37898b6baf30",
   "photo-1622434641406-a158123450f9",
-  "photo-1547996160-81dfa63595aa",
+  // "photo-1547996160-81dfa63595aa",
   "photo-1524592094714-0f0654e20314",
   "photo-1542496658-e33a6d0d50f6",
   "photo-1533139502658-0198f920d8e8",
@@ -60,15 +59,15 @@ const productSeeds: Array<Partial<Product> & Pick<Product, "name" | "brand" | "p
   { name: "Seamaster Aqua Terra", brand: "Omega", price: 5400, oldPrice: 5900, category: "sports", gender: "men", badge: "Sale", trending: true },
   { name: "Carrera Chronograph", brand: "TAG Heuer", price: 4100, category: "sports", gender: "men", badge: "New", newArrival: true },
   { name: "Aquaracer Pro 300", brand: "TAG Heuer", price: 3200, category: "sports", gender: "unisex", trending: true },
-  { name: "Le Locle Powermatic", brand: "Tissot", price: 745, category: "affordable", gender: "men", badge: "Bestseller", bestSeller: true },
-  { name: "PRX Powermatic 80", brand: "Tissot", price: 695, oldPrice: 795, category: "affordable", gender: "unisex", badge: "Sale", trending: true },
+  { name: "Le Locle Powermatic", brand: "Tissot", price: 745, category: "mens", gender: "men", badge: "Bestseller", bestSeller: true },
+  { name: "PRX Powermatic 80", brand: "Tissot", price: 695, oldPrice: 795, category: "mens", gender: "unisex", badge: "Sale", trending: true },
   { name: "Prospex Diver", brand: "Seiko", price: 525, category: "sports", gender: "men", badge: "New", newArrival: true },
   { name: "Presage Cocktail", brand: "Seiko", price: 410, category: "mens", gender: "men", bestSeller: true },
-  { name: "G-Shock GA-2100", brand: "Casio", price: 99, category: "affordable", gender: "unisex", badge: "Bestseller", bestSeller: true, trending: true },
+  { name: "G-Shock GA-2100", brand: "Casio", price: 99, category: "sports", gender: "unisex", badge: "Bestseller", bestSeller: true, trending: true },
   { name: "Edifice EQB-1100", brand: "Casio", price: 320, category: "smart", gender: "men", badge: "New", newArrival: true },
   { name: "Eco-Drive Promaster", brand: "Citizen", price: 480, category: "sports", gender: "men" },
   { name: "Tsuyosa Automatic", brand: "Citizen", price: 395, oldPrice: 450, category: "mens", gender: "men", badge: "Sale" },
-  { name: "Neutra Chronograph", brand: "Fossil", price: 189, category: "affordable", gender: "men", newArrival: true },
+  { name: "Neutra Chronograph", brand: "Fossil", price: 189, category: "mens", gender: "men", newArrival: true },
   { name: "Carlie Mini", brand: "Fossil", price: 129, category: "womens", gender: "women", badge: "New", newArrival: true },
   { name: "Marlin Automatic", brand: "Timex", price: 249, category: "vintage", gender: "men", badge: "Bestseller", bestSeller: true },
   { name: "Q Timex Reissue", brand: "Timex", price: 179, category: "vintage", gender: "unisex", trending: true },
@@ -95,8 +94,8 @@ const baseSpecs = {
 
 export const products: Product[] = productSeeds.map((p, i) => {
   const id = `w-${i + 1}`;
-  const image = img(watchImages[i % watchImages.length], 900);
-  const images = [0, 1, 2].map((k) => img(watchImages[(i + k) % watchImages.length], 1100));
+  const image = img(watchImages[i % watchImages.length], 1400);
+  const images = [0, 1, 2].map((k) => img(watchImages[(i + k) % watchImages.length], 1800));
   return {
     id,
     name: p.name!,
@@ -122,7 +121,6 @@ export const trending = products.filter((p) => p.trending);
 export const newArrivals = products.filter((p) => p.newArrival);
 export const bestSellers = products.filter((p) => p.bestSeller);
 export const premium = products.filter((p) => p.price >= 5000);
-export const affordable = products.filter((p) => p.price < 800);
 
 export const testimonials = [
   { name: "James Whitman", role: "Collector, London", text: "Exceptional authenticity and packaging. My Submariner arrived flawless — the buying experience matched the watch itself.", rating: 5 },
