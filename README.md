@@ -34,19 +34,6 @@ npm run build
 npm run preview
 ```
 
-## Pages
-
-- **Home** - Featured collections and trending watches
-- **Shop** - Browse all premium watches
-- **About** - Our story, mission, and values
-- **Contact** - Get in touch with our team
-- **Customer Care**:
-  - Shipping Policy
-  - Returns & Exchanges
-  - Warranty
-  - FAQ
-  - Support
-
 ## Deployment
 
 This project is configured for Vercel deployment. Simply connect your GitHub repository to Vercel and deploy with one click.
